@@ -1,0 +1,4 @@
+cat ca-500.csv | sed 1d | sort -k 2,2 -k 1,1 -t "," > q1_addresses_sorted
+grep -w "Calgary" ca-500.csv |wc -l > q1_calgary
+cat ca-500.csv | cut -f 5 -d ","|sed 1d| sort | uniq| wc -l > q1_different_cities_count
+cat ca-500.csv  | cut -d, -f 5,6 |sed 1d| sort | uniq > q1_cities_provinces

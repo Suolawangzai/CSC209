@@ -1,0 +1,319 @@
+Script started on Thu Jul 28 16:53:47 2016
+wolf:~/Lab10% gdb reanclient[K[K[K[K[K[K[K[K[Kandclient
+GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2.1) 7.4-2012.04
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+For bug reporting instructions, please see:
+<http://bugs.launchpad.net/gdb-linaro/>...
+Reading symbols from /h/u13/g6/00/g5tqian/Lab10/randclient...done.
+(gdb) be reak main
+Breakpoint 1 at 0x4007c3: file randclient.c, line 16.
+(gdb) run 127.0.01
+Starting program: /h/u13/g6/00/g5tqian/Lab10/randclient 127.0.01
+warning: no loadable sections found in added symbol-file system-supplied DSO at 0x7ffff7ffa000
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffeb18) at randclient.c:16
+16      int main(int argc, char** argv) {
+(gdb) n n
+18        char message[18] = "A stitch in time\r\n";
+(gdb) n
+24        if ((soc = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+(gdb) n
+29        peer.sin_family = AF_INET;
+(gdb) n
+30        peer.sin_port = htons(PORT);
+(gdb) n
+31        if (inet_pton(AF_INET, argv[1], &peer.sin_addr) < 1) {
+(gdb) n
+32          perror("randclient: inet_pton");
+(gdb) n
+randclient: inet_pton: Success
+33          close(soc);
+(gdb) n
+34          exit(1);
+(gdb) n
+[Inferior 1 (process 17253) exited with code 01]
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+(gdb) n
+The program is not being run.
+(gdb) run 127.0.01
+Starting program: /h/u13/g6/00/g5tqian/Lab10/randclient 127.0.01
+warning: no loadable sections found in added symbol-file system-supplied DSO at 0x7ffff7ffa000
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffeb18) at randclient.c:16
+16      int main(int argc, char** argv) {
+(gdb) n
+18        char message[18] = "A stitch in time\r\n";
+(gdb) n
+24        if ((soc = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+(gdb) n
+29        peer.sin_family = AF_INET;
+(gdb) n
+30        peer.sin_port = htons(PORT);
+(gdb) n
+31        if (inet_pton(AF_INET, argv[1], &peer.sin_addr) < 1) {
+(gdb) n
+32          perror("randclient: inet_pton");
+(gdb) n
+randclient: inet_pton: Success
+33          close(soc);
+(gdb) n
+34          exit(1);
+(gdb) n
+[Inferior 1 (process 17395) exited with code 01]
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+(gdb) run[2Pn run 127.0.01
+Starting program: /h/u13/g6/00/g5tqian/Lab10/randclient 127.0.01
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffeb18) at randclient.c:16
+16      int main(int argc, char** argv) {
+(gdb) n
+18        char message[18] = "A stitch in time\r\n";
+(gdb) n
+24        if ((soc = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+(gdb) n
+29        peer.sin_family = AF_INET;
+(gdb) n
+30        peer.sin_port = htons(PORT);
+(gdb) n
+31        if (inet_pton(AF_INET, argv[1], &peer.sin_addr) < 1) {
+(gdb) n
+32          perror("randclient: inet_pton");
+(gdb) n
+randclient: inet_pton: Success
+33          close(soc);
+(gdb) n
+34          exit(1);
+(gdb) n
+[Inferior 1 (process 17421) exited with code 01]
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+warning: Error removing breakpoint 0
+(gdb) n
+The program is not being run.
+(gdb) run 127.0101   .01
+Starting program: /h/u13/g6/00/g5tqian/Lab10/randclient 127.0.01
+warning: no loadable sections found in added symbol-file system-supplied DSO at 0x7ffff7ffa000
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffeb18) at randclient.c:16
+16      int main(int argc, char** argv) {
+(gdb) run 127.0.01 .1
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+
+Starting program: /h/u13/g6/00/g5tqian/Lab10/randclient 127.0.0.1
+warning: no loadable sections found in added symbol-file system-supplied DSO at 0x7ffff7ffa000
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffeb18) at randclient.c:16
+16      int main(int argc, char** argv) {
+(gdb) n
+18        char message[18] = "A stitch in time\r\n";
+(gdb) n
+24        if ((soc = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+(gdb) n
+29        peer.sin_family = AF_INET;
+(gdb) n
+30        peer.sin_port = htons(PORT);
+(gdb) n
+31        if (inet_pton(AF_INET, argv[1], &peer.sin_addr) < 1) {
+(gdb) n
+37        if (connect(soc, (struct sockaddr *)&peer, sizeof(peer)) == -1) {
+(gdb) n
+42        total_bytes = TIMES * sizeof(message);
+(gdb) n
+43        current_byte = 0;
+(gdb) n
+44        while (current_byte < total_bytes) {
+(gdb) n
+45          howmany = rand() % (MAXCHARS - MINCHARS + 1) + MINCHARS;
+(gdb) n
+46          bytes_left = total_bytes - current_byte;
+(gdb) n
+47          if (howmany > bytes_left) {
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+53          write(soc, piece, howmany);
+(gdb) n
+54          current_byte += howmany;
+(gdb) n
+44        while (current_byte < total_bytes) {
+(gdb) n
+45          howmany = rand() % (MAXCHARS - MINCHARS + 1) + MINCHARS;
+(gdb) n
+46          bytes_left = total_bytes - current_byte;
+(gdb) n
+47          if (howmany > bytes_left) {
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+53          write(soc, piece, howmany);
+(gdb) n
+54          current_byte += howmany;
+(gdb) n
+44        while (current_byte < total_bytes) {
+(gdb) n
+45          howmany = rand() % (MAXCHARS - MINCHARS + 1) + MINCHARS;
+(gdb) n
+46          bytes_left = total_bytes - current_byte;
+(gdb) n
+47          if (howmany > bytes_left) {
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+53          write(soc, piece, howmany);
+(gdb) n
+54          current_byte += howmany;
+(gdb) n
+44        while (current_byte < total_bytes) {
+(gdb) n
+45          howmany = rand() % (MAXCHARS - MINCHARS + 1) + MINCHARS;
+(gdb) n
+46          bytes_left = total_bytes - current_byte;
+(gdb) n
+47          if (howmany > bytes_left) {
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+53          write(soc, piece, howmany);
+(gdb) n
+54          current_byte += howmany;
+(gdb) n
+44        while (current_byte < total_bytes) {
+(gdb) n
+45          howmany = rand() % (MAXCHARS - MINCHARS + 1) + MINCHARS;
+(gdb) n
+46          bytes_left = total_bytes - current_byte;
+(gdb) n
+47          if (howmany > bytes_left) {
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+51            piece[i] = message[(current_byte + i) % sizeof(message)];
+(gdb) n
+50          for (int i = 0; i < howmany; i++) {
+(gdb) n
+53          write(soc, piece, howmany);
+(gdb) n
+54          current_byte += howmany;
+(gdb) n
+44        while (current_byte < total_bytes) {
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 17436] will be killed.
+
+Quit anyway? (y or n) y
+wolf:~/Lab10% exit
+exit
+
+Script done on Thu Jul 28 17:00:41 2016

@@ -1,0 +1,125 @@
+Script started on Sun Jun 26 00:11:35 2016
+wolf:~/Desktop% gdb overflow
+GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2.1) 7.4-2012.04
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+For bug reporting instructions, please see:
+<http://bugs.launchpad.net/gdb-linaro/>...
+Reading symbols from /h/u13/g6/00/g5tqian/Desktop/overflow...done.
+(gdb) break main
+Breakpoint 1 at 0x40058c: file overflow.c, line 7.
+(gdb) list 32
+27          printf("\n");
+28          
+29          
+30          for (i = 0; i < OVERFLOW; i++) {
+31              a[i] = i * 10;
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+34          }
+35          
+36          return 0;
+(gdb) break 30
+Breakpoint 2 at 0x4006b6: file overflow.c, line 30.
+(gdb) run  
+Starting program: /h/u13/g6/00/g5tqian/Desktop/overflow 
+warning: no loadable sections found in added symbol-file system-supplied DSO at 0x7ffff7ffa000
+
+Breakpoint 1, main () at overflow.c:7
+7           int index = 0;
+(gdb) display i
+1: i = -5344
+(gdb) continus e
+Continuing.
+Address of the variables:
+7fffffffea38 -> &j
+7fffffffea20 -> &a[0]
+7fffffffea24 -> &a[1]
+7fffffffea28 -> &a[2]
+7fffffffea2c -> &a[3]
+7fffffffea34 -> &k
+7fffffffea30 -> &i
+
+Initial values: i = -5344, j = 10, k = 10
+a = {0, 0, 0, 0}
+
+
+Breakpoint 2, main () at overflow.c:30
+30          for (i = 0; i < OVERFLOW; i++) {
+1: i = -5344
+(gdb) next
+31              a[i] = i * 10;
+1: i = 0
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+1: i = 0
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 0
+(gdb) next
+i = 0, j = 10, k = 10           a = {0, 0, 0, 0}
+30          for (i = 0; i < OVERFLOW; i++) {
+1: i = 0
+(gdb) next
+31              a[i] = i * 10;
+1: i = 1
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+1: i = 1
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 1
+(gdb) next
+i = 1, j = 10, k = 10           a = {0, 10, 0, 0}
+30          for (i = 0; i < OVERFLOW; i++) {
+1: i = 1
+(gdb) next
+31              a[i] = i * 10;
+1: i = 2
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+1: i = 2
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 2
+(gdb) next
+i = 2, j = 10, k = 10           a = {0, 10, 20, 0}
+30          for (i = 0; i < OVERFLOW; i++) {
+1: i = 2
+(gdb) next
+31              a[i] = i * 10;
+1: i = 3
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+1: i = 3
+(gdb) next
+33              printf("a = {%d, %d, %d, %d}\n", a[0], a[1], a[2], a[3]);
+1: i = 3
+(gdb) next
+i = 3, j = 10, k = 10           a = {0, 10, 20, 30}
+30          for (i = 0; i < OVERFLOW; i++) {
+1: i = 3
+(gdb) next
+31              a[i] = i * 10;
+1: i = 4
+(gdb) next
+32              printf("i = %d, j = %d, k = %d\t\t", i, j, k);
+1: i = 40
+(gdb) print &i
+$1 = (int *) 0x7fffffffea30
+(gdb) print &a[i]  4]
+$2 = (int *) 0x7fffffffea30
+(gdb) exit    quit
+A debugging session is active.
+
+        Inferior 1 [process 26799] will be killed.
+
+Quit anyway? (y or n) y
+wolf:~/Desktop% exit
+exit
+
+Script done on Sun Jun 26 00:14:36 2016

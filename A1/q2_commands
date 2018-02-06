@@ -1,0 +1,5 @@
+cat A|tr -d '[\000-\011\013-\037\177-\377]'|grep -x 1 -c >> q2_results
+sort -n A | head -1 >> q2_results
+sort -n A | tail -1 >> q2_results
+sort -nu A B > UNION
+sort -n A B | uniq -d > INTERSECTION
